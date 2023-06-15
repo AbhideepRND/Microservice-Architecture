@@ -1,0 +1,19 @@
+digraph "order-container" {
+  node [shape="box",style="rounded",fontname="Helvetica",fontsize="14"]
+  edge [fontsize="10",fontname="Helvetica"]
+
+  // Node Definitions:
+  "com.food.ordring.system:order-container:jar"[label=<order-container>]
+  "com.food.ordring.system:order-domain-core:jar"[label=<order-domain-core>]
+  "com.food.ordring.system:order-domain-application-service:jar"[label=<order-domain-application-service>]
+  "com.food.ordring.system:order-application:jar"[label=<order-application>]
+  "com.food.ordring.system:order-messaging:jar"[label=<order-messaging>]
+  "com.food.ordring.system:order-data-access:jar"[label=<order-data-access>]
+
+  // Edge Definitions:
+  "com.food.ordring.system:order-container:jar" -> "com.food.ordring.system:order-domain-core:jar"
+  "com.food.ordring.system:order-container:jar" -> "com.food.ordring.system:order-domain-application-service:jar"
+  "com.food.ordring.system:order-container:jar" -> "com.food.ordring.system:order-application:jar"
+  "com.food.ordring.system:order-container:jar" -> "com.food.ordring.system:order-messaging:jar"
+  "com.food.ordring.system:order-container:jar" -> "com.food.ordring.system:order-data-access:jar"
+}

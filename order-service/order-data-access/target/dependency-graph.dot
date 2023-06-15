@@ -1,0 +1,13 @@
+digraph "order-data-access" {
+  node [shape="box",style="rounded",fontname="Helvetica",fontsize="14"]
+  edge [fontsize="10",fontname="Helvetica"]
+
+  // Node Definitions:
+  "com.food.ordring.system:order-domain-application-service:jar"[label=<order-domain-application-service>]
+  "com.food.ordring.system:order-domain-core:jar"[label=<order-domain-core>]
+  "com.food.ordring.system:order-data-access:jar"[label=<order-data-access>]
+
+  // Edge Definitions:
+  "com.food.ordring.system:order-domain-application-service:jar" -> "com.food.ordring.system:order-domain-core:jar"
+  "com.food.ordring.system:order-data-access:jar" -> "com.food.ordring.system:order-domain-application-service:jar"
+}
