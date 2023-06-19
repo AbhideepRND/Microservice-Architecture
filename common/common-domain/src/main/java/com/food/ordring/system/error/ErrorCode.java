@@ -14,7 +14,7 @@ public enum ErrorCode {
     DOM_111("Could not find restaurant "),
     DOM_112("Currency not available"),
     DOM_113("Unable to save order"),
-    DOM_114(""),
+    DOM_114("Order not found"),
     DOM_115(""),
     DOM_116(""),
     DOM_117(""),
