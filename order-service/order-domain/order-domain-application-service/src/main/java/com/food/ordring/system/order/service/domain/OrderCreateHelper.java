@@ -22,6 +22,7 @@ import java.util.UUID;
 @Slf4j
 @Component
 public class OrderCreateHelper {
+
     private final OrderServiceDomain orderServiceDomain;
 
     private final CustomerRepository customerRepository;
@@ -48,10 +49,10 @@ public class OrderCreateHelper {
     public CreateOrderEvent persistOrder(CreateOrderCommand createOrderCommand) {
         checkCustomer(createOrderCommand.getCustomerId());
         Restaurant restaurant = checkRestaurant(createOrderCommand);
-        Order orderCommandToOrder = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
-        CreateOrderEvent createOrderEvent = orderServiceDomain.validateAndInitiateOrder(orderCommandToOrder, restaurant);
-        final Order order = createOrderEvent.getOrder();
-        saveOrder(order);
+        Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
+        CreateOrderEvent createOrderEvent = orderServiceDomain.validateAndInitiateOrder(order, restaurant);
+        final Order orderCreated = createOrderEvent.getOrder();
+        saveOrder(orderCreated);
         return createOrderEvent;
     }
 

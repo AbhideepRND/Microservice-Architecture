@@ -1,0 +1,13 @@
+.gradle
+build
+!bower_components/**/build
+.idea
+*.ipr
+*.iws
+gradle-app.setting
+*.iml
+out
+bin/
+.classpath
+.project
+.settings/

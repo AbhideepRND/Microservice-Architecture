@@ -38,14 +38,13 @@ public class OrderDataMapper {
 
     private List<OrderItem> createOrderItemCommandToOrderItem(List<com.food.ordring.system.order.service.domain.dto.create.OrderItem> items) {
 
-        items.stream().map(item -> OrderItem.builder()
+        return items.stream().map(item -> OrderItem.builder()
                         .product(new Product(new ProductId(item.getProductId())))
                         .price(new Money(item.getProductPrice(), Currency.getCurrency(item.getCurrency())))
                         .quantity(item.getQuantity())
                         .subtotal(new Money(item.getSubTotal(), Currency.getCurrency(item.getCurrency()))).build())
                 .toList();
 
-        return null;
     }
 
     private StreetAddress orderAddressToStreetAddress(OrderAddress address) {
@@ -55,9 +54,13 @@ public class OrderDataMapper {
                 address.getCity());
     }
 
-    public CreateOrderResponse orderToCreateOrderResponse(Order order) {
+    public CreateOrderResponse orderToCreateOrderResponse(Order order, String message) {
 
-        return CreateOrderResponse.builder().orderStatus(order.getOrderStatus()).orderTrackingId(order.getTrackingId().getValue()).build();
+        return CreateOrderResponse.builder()
+                .orderStatus(order.getOrderStatus())
+                .orderTrackingId(order.getTrackingId().getValue())
+                .message(message)
+                .build();
     }
 
     public TrackOrderResponse orderToTrackOrderResponse(Order order){
